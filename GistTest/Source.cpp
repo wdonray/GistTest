@@ -35,25 +35,24 @@ public:
 int Five(int * array, int size)
 {
 	int b = 0;
-	int c = 0;
+	int LargestNum = 0;
 	for (int i = 0; i < size; i++)
 	{
-		int a = 0;
+		int Counter = 0;
 		for (int x = 0; x < size; x++)
 		{
 			if (array[i] == array[x])
 			{
-				a++;
-				if (a > b)
+				Counter++;
+				if (Counter > b)
 				{
-					c = array[x];
-					b = a;
-
+					LargestNum = array[x];
+					b = Counter;
 				}
 			}
 		}
 	}
-	return c;
+	return LargestNum;
 }
 void Six(int &a, int &b)
 {
@@ -63,39 +62,38 @@ void Six(int &a, int &b)
 }
 void Seven(std::string strings[], int length)
 {
-	for (int i = 0; i <= length*length; i++)
+	for (int i = 0; i <= length*length; i++) // Loops throught the entire array 
 	{
-		if (i % length != 0)
+		if (i % length != 0) //Checks if we are going out of range
 		{
-			for (int x = 0;; x++)
+			for (int x = 0;; x++) //Loops through each character of each string in the array 
 			{
-				if (strings[(i % length) - 1] == strings[i % length])
+				if (strings[(i % length) - 1] == strings[i % length]) //Checks if the two strings are equal to each other
 				{
 					break;
 				}
-				else if (strings[(i % length) - 1][x] == NULL)
+				else if (strings[(i % length) - 1][x] == NULL) //If at the end of the first word break
 				{
 					break;
 				}
-				else if (strings[(i % length)][x] == NULL) //The error I was having was a small syntax I had = not ==
-				{
-					std::string tmp = strings[(i % length) - 1];
-					strings[(i % length) - 1] = strings[i % length];
-					strings[i % length] = tmp;
-					break;
-				}
-				else if (strings[(i % length) - 1][x] > strings[i % length][x])
+				else if (strings[(i % length)][x] == NULL) //If at the end of the second word swap them
 				{
 					std::string tmp = strings[(i % length) - 1];
 					strings[(i % length) - 1] = strings[i % length];
 					strings[i % length] = tmp;
 					break;
 				}
-				else if (strings[(i % length) - 1][x] < strings[i % length][x])
+				else if (strings[(i % length) - 1][x] > strings[i % length][x]) //If character in the first word are greater than second word swap them
+				{
+					std::string tmp = strings[(i % length) - 1];
+					strings[(i % length) - 1] = strings[i % length];
+					strings[i % length] = tmp;
+					break;
+				}
+				else if (strings[(i % length) - 1][x] < strings[i % length][x]) //If they are less than break
 				{
 					break;
 				}
-				x++;
 			}
 		}
 	}
